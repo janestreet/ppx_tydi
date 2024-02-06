@@ -21,7 +21,8 @@ let () =
   ignore (foo : int)
 ;;
 
-[%%expect {|
+[%%expect
+  {|
 Line _, characters _-_:
 Error: Unbound record field foo
 |}]

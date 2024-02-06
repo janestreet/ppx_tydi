@@ -20,7 +20,8 @@ let () =
   ignore (foo : int)
 ;;
 
-[%%expect {|
+[%%expect
+  {|
 Line _, characters _-_:
 Error: Unbound record field foo
 |}]
@@ -48,7 +49,8 @@ let () =
   ()
 ;;
 
-[%%expect {|
+[%%expect
+  {|
 Line _:
 Error: [let rec] is not supported.
 |}]
@@ -84,7 +86,8 @@ let (_ : T.a) =
    ppx_let. *)
 let (_ : T.a) = r |> fun { foo = _ } -> A
 
-[%%expect {|
+[%%expect
+  {|
 Line _, characters _-_:
 Error: Unbound constructor A
 |}]
