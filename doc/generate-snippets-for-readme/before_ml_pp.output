@@ -1,0 +1,10 @@
+type t = { foo : int }
+
+let default = { foo = 0 }
+
+(* $MDX part-begin=converted *)
+let () =
+  match default with
+  | { foo } -> ignore (foo : int)
+;;
+(* $MDX part-end *)

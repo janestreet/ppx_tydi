@@ -30,19 +30,22 @@ Error: Unbound record field foo
 
 `ppx_tydi` rewrites let-bindings to match statements, e.g.
 
-<!-- $MDX file=doc/generate-snippets-for-readme/before.ml -->
+<!-- $MDX file=doc/generate-snippets-for-readme/before.ml,part=let_tydi -->
 ```ocaml
 let () =
-  let%tydi (() as unit) = () in
-  unit
+  let%tydi { foo } = default in
+  ignore (foo : int)
 ;;
 ```
 
 goes to
 
-<!-- $MDX file=doc/generate-snippets-for-readme/before.ml.pp -->
+<!-- $MDX file=doc/generate-snippets-for-readme/before_ml_pp.output,part=converted -->
 ```ocaml
-let () = match () with | () as unit -> unit
+let () =
+  match default with
+  | { foo } -> ignore (foo : int)
+;;
 ```
 
 `tydi` stands for "Type-directed" and is pronounced "Tidy".
