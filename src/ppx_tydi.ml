@@ -7,7 +7,7 @@ let extension =
     Ast_pattern.t
     =
     let open Ast_pattern in
-    single_expr_payload (pexp_let __ (many (pack2 (value_binding ~pat:__ ~expr:__))) __)
+    single_expr_payload (pexp_let __ (many (pack2 (value_binding ~constraint_:drop ~pat:__ ~expr:__))) __)
     |> map2 ~f:(fun rec_flag bindings ->
          match rec_flag with
          | Recursive -> Location.raise_errorf "[let rec] is not supported."
